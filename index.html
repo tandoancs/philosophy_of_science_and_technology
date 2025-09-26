@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triết học & Công nghệ: Tương lai trong tay chúng ta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #f8fafc;
+            color: #073B4C;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flowchart-node {
+            border: 2px solid #118AB2;
+            background-color: #ffffff;
+            color: #073B4C;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        .flowchart-node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .arrow {
+            font-size: 2.5rem;
+            color: #FFD166;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold tracking-tight text-[#073B4C]">Vai Trò Của Khoa Học Công Nghệ Trong Sự Phát Triển Xã Hội</h1>
+            <p class="mt-2 text-lg text-[#118AB2]">Một góc nhìn triết học về con đường phía trước của nhân loại</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        
+        <section id="introduction" class="bg-white rounded-lg shadow-lg p-6 mb-8 text-center">
+            <h2 class="text-2xl font-bold text-[#118AB2] mb-4">Lưỡi Dao Hai Lưỡi Của Sự Tiến Bộ</h2>
+            <p class="text-base md:text-lg leading-relaxed max-w-4xl mx-auto">
+                Khoa học công nghệ (KHCN) là động lực vĩ đại nhất của sự thay đổi trong lịch sử loài người. Nó đã giải phóng chúng ta khỏi những giới hạn của tự nhiên, kéo dài tuổi thọ, và kết nối thế giới. Tuy nhiên, mỗi bước tiến lại mở ra những câu hỏi triết học sâu sắc về bản chất, mục đích, và khả năng kiểm soát của chúng ta. Infographic này sẽ khám phá mối quan hệ biện chứng đó và trả lời câu hỏi: Liệu chúng ta có đang làm chủ được vận mệnh của mình không?
+            </p>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-[#118AB2] mb-4 text-center">Động Lực Phát Triển: Những Thành Tựu Không Thể Chối Cãi</h2>
+                <p class="text-center mb-6">KHCN đã định hình lại nền văn minh qua việc cải thiện mọi khía cạnh của đời sống con người, từ kinh tế, sức khỏe đến tri thức.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="font-semibold text-center mb-2">Tăng Trưởng Kinh Tế Toàn Cầu</h3>
+                        <div class="chart-container h-64 md:h-80">
+                            <canvas id="gdpChart"></canvas>
+                        </div>
+                        <p class="text-sm text-center mt-2">Các cuộc cách mạng công nghiệp đã tạo ra sự tăng trưởng kinh tế theo cấp số nhân, nâng cao mức sống toàn cầu.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-center mb-2">Gia Tăng Tuổi Thọ Trung Bình</h3>
+                         <div class="chart-container h-64 md:h-80">
+                            <canvas id="lifeExpectancyChart"></canvas>
+                        </div>
+                        <p class="text-sm text-center mt-2">Những đột phá trong y học và vệ sinh công cộng đã giúp con người sống lâu hơn và khỏe mạnh hơn bao giờ hết.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                 <h2 class="text-2xl font-bold text-[#118AB2] mb-4 text-center">Những Câu Hỏi Lớn: Thách Thức Và Nghịch Lý</h2>
+                 <p class="text-center mb-6">Sự phát triển vũ bão của KHCN cũng tạo ra những thách thức triết học và xã hội phức tạp, đòi hỏi sự suy ngẫm và hành động cẩn trọng.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <h3 class="font-semibold text-center mb-2">Phân Bổ Lợi Ích Công Nghệ</h3>
+                         <div class="chart-container h-80 md:h-96">
+                            <canvas id="inequalityChart"></canvas>
+                        </div>
+                        <p class="text-sm text-center mt-2">Dù công nghệ tạo ra của cải khổng lồ, khoảng cách giàu nghèo và "bất bình đẳng số" vẫn là một vấn đề nhức nhối.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-center mb-2">Các Rủi Ro Hiện Hữu Mới</h3>
+                        <div class="space-y-4 mt-4">
+                             <div class="bg-red-50 p-4 rounded-lg border-l-4 border-[#FF6B6B]">
+                                <h4 class="font-bold">Trí Tuệ Nhân Tạo (AI)</h4>
+                                <p class="text-sm">Câu hỏi về ý thức, quyền tự quyết của AI, và nguy cơ AI siêu trí tuệ vượt khỏi tầm kiểm soát.</p>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-[#FFD166]">
+                                <h4 class="font-bold">Biến đổi Gen</h4>
+                                <p class="text-sm">Những lằn ranh đạo đức của việc "chỉnh sửa" sự sống, bao gồm cả con người.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg border-l-4 border-[#06D6A0]">
+                                <h4 class="font-bold">Tự động hóa & Việc làm</h4>
+                                <p class="text-sm">Nguy cơ thay thế lao động trên quy mô lớn và định nghĩa lại ý nghĩa của "công việc".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-[#118AB2] mb-2 text-center">Câu hỏi con 1: Con người còn làm chủ được KHCN hay không?</h2>
+                <p class="text-center text-lg mb-6">Câu trả lời là <span class="font-bold text-[#06D6A0]">CÓ</span>, nhưng đó là một quá trình chủ động và liên tục, không phải là một trạng thái mặc định.</p>
+                <p class="text-center mb-8">Việc làm chủ công nghệ không có nghĩa là kìm hãm sự phát triển, mà là định hướng nó theo các giá trị nhân văn. Điều này đòi hỏi một phương pháp luận rõ ràng, một vòng lặp của sự cẩn trọng và tiến bộ.</p>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="flowchart-node">
+                        <span class="text-2xl">💡</span>
+                        <h3 class="font-bold">Đổi Mới & Sáng Tạo</h3>
+                        <p class="text-sm">Thúc đẩy nghiên cứu, khám phá không giới hạn.</p>
+                    </div>
+                    <div class="arrow hidden md:block">→</div>
+                    <div class="arrow md:hidden">↓</div>
+                    <div class="flowchart-node">
+                        <span class="text-2xl">🤔</span>
+                        <h3 class="font-bold">Phản Biện & Đánh Giá Đạo Đức</h3>
+                        <p class="text-sm">Phân tích tác động xã hội, môi trường và đạo đức.</p>
+                    </div>
+                    <div class="arrow hidden md:block">→</div>
+                    <div class="arrow md:hidden">↓</div>
+                    <div class="flowchart-node">
+                         <span class="text-2xl">🏛️</span>
+                        <h3 class="font-bold">Thiết Lập Quy Tắc & Quản Trị</h3>
+                        <p class="text-sm">Xây dựng luật pháp, quy định, và chuẩn mực chung.</p>
+                    </div>
+                    <div class="arrow hidden md:block">→</div>
+                    <div class="arrow md:hidden">↓</div>
+                    <div class="flowchart-node">
+                         <span class="text-2xl">🌍</span>
+                        <h3 class="font-bold">Triển Khai Có Trách Nhiệm</h3>
+                        <p class="text-sm">Áp dụng công nghệ vì lợi ích chung của nhân loại.</p>
+                    </div>
+                </div>
+            </div>
+
+             <div class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-[#118AB2] mb-2 text-center">Câu hỏi con 2: Hay là sẽ diệt vong? Luận chứng bác bỏ.</h2>
+                 <p class="text-center text-lg mb-6">Kịch bản diệt vong là một khả năng lý thuyết, nhưng <span class="font-bold text-[#FF6B6B]">không phải là một định mệnh</span>. Luận điểm này được chứng minh dựa trên các nguyên lý và năng lực cốt lõi của con người.</p>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <div class="p-4 bg-slate-50 rounded-lg">
+                        <h3 class="font-bold text-lg text-[#118AB2]">1. Nguyên lý tự bảo tồn và khả năng thích ứng</h3>
+                        <p class="mt-2 text-sm">Lịch sử cho thấy con người là loài có khả năng thích ứng phi thường. Từ việc sống sót qua các kỷ băng hà đến việc đối phó với đại dịch, chúng ta có bản năng sinh tồn và học hỏi từ khủng hoảng. Khi một công nghệ trở thành mối đe dọa hiện hữu, nó sẽ kích hoạt cơ chế phòng vệ tập thể mạnh mẽ nhất của chúng ta.</p>
+                    </div>
+                     <div class="p-4 bg-slate-50 rounded-lg">
+                        <h3 class="font-bold text-lg text-[#118AB2]">2. Sự trỗi dậy của ý thức và đạo đức toàn cầu</h3>
+                        <p class="mt-2 text-sm">Chưa bao giờ trong lịch sử, nhân loại lại có sự kết nối và nhận thức chung về các vấn đề toàn cầu như hiện nay. Các khái niệm về nhân quyền, phát triển bền vững, và đạo đức công nghệ đang ngày càng trở thành một phần của diễn ngôn chính trị và xã hội. Đây là nền tảng để xây dựng các cơ chế quản trị công nghệ toàn cầu.</p>
+                    </div>
+                     <div class="p-4 bg-slate-50 rounded-lg">
+                        <h3 class="font-bold text-lg text-[#118AB2]">3. Công nghệ cũng là công cụ giải quyết vấn đề</h3>
+                        <p class="mt-2 text-sm">Bản thân công nghệ không chỉ tạo ra rủi ro mà còn cung cấp công cụ để giảm thiểu chúng. Chúng ta dùng AI để giám sát biến đổi khí hậu, dùng công nghệ sinh học để chữa bệnh, dùng mạng lưới toàn cầu để cảnh báo sớm các mối nguy. Cuộc chạy đua không phải là giữa con người và máy móc, mà là giữa việc sử dụng công nghệ một cách khôn ngoan và việc lạm dụng nó.</p>
+                    </div>
+                     <div class="p-4 bg-slate-50 rounded-lg">
+                        <h3 class="font-bold text-lg text-[#118AB2]">4. Phương pháp luận khoa học bao hàm sự hoài nghi và sửa sai</h3>
+                        <p class="mt-2 text-sm">Bản chất của tiến bộ khoa học là liên tục đặt câu hỏi, kiểm chứng giả thuyết, và sửa chữa sai lầm. Chính tinh thần này, khi áp dụng vào việc phát triển công nghệ, sẽ giúp chúng ta lường trước và khắc phục các hậu quả không mong muốn. Sự diệt vong đòi hỏi một sai lầm tuyệt đối và không thể sửa chữa, điều này đi ngược lại với chính quy trình của KHCN.</p>
+                    </div>
+                 </div>
+            </div>
+
+            <div class="md:col-span-2 lg:col-span-3 bg-gradient-to-r from-[#118AB2] to-[#06D6A0] rounded-lg shadow-lg p-8 text-white">
+                <h2 class="text-3xl font-bold text-center mb-4">Kết Luận: Tương Lai Là Một Công Trình Đang Xây Dựng</h2>
+                <p class="text-center text-xl leading-relaxed max-w-4xl mx-auto">
+                    Vai trò của khoa học công nghệ không tốt hay xấu một cách tuyệt đối. Nó là một tấm gương phản chiếu những giá trị, khát vọng, và cả những thiếu sót của chúng ta. Con người vẫn đang và sẽ tiếp tục làm chủ công nghệ, bởi lẽ công nghệ là sản phẩm của trí tuệ con người. Việc tránh khỏi sự diệt vong không phải là may mắn, mà là kết quả của một quá trình đấu tranh không ngừng: lựa chọn sự hợp tác thay vì xung đột, trí tuệ thay vì tham lam, và nhân văn thay vì vô cảm. Tương lai không phải để dự đoán, mà là để kiến tạo.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white mt-12">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+            <p>Infographic được tạo ra nhằm mục đích phân tích triết học. Dữ liệu trong biểu đồ mang tính chất minh họa cho các xu hướng chung.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const FONT_COLOR = '#073B4C';
+            const GRID_COLOR = '#e2e8f0';
+            
+            const PALETTE = {
+                red: '#FF6B6B',
+                yellow: '#FFD166',
+                green: '#06D6A0',
+                blue: '#118AB2',
+                dark: '#073B4C'
+            };
+
+            function wrapLabel(str, maxWidth) {
+                if (str.length <= maxWidth) {
+                    return str;
+                }
+                const words = str.split(' ');
+                let lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine += (currentLine ? ' ' : '') + word;
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            }
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const commonChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: FONT_COLOR,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: FONT_COLOR },
+                        grid: { color: GRID_COLOR }
+                    },
+                    x: {
+                        ticks: { color: FONT_COLOR },
+                        grid: { color: GRID_COLOR }
+                    }
+                }
+            };
+
+            var ctxGdp = document.getElementById('gdpChart').getContext('2d');
+            new Chart(ctxGdp, {
+                type: 'line',
+                data: {
+                    labels: ['1820', '1913', '1950', '1973', '2001', '2023'],
+                    datasets: [{
+                        label: 'GDP Toàn Cầu (nghìn tỷ USD)',
+                        data: [0.7, 2.7, 5.3, 16, 41, 105],
+                        backgroundColor: 'rgba(6, 214, 160, 0.2)',
+                        borderColor: PALETTE.green,
+                        tension: 0.3,
+                        fill: true,
+                    }]
+                },
+                options: commonChartOptions
+            });
+
+            var ctxLife = document.getElementById('lifeExpectancyChart').getContext('2d');
+            new Chart(ctxLife, {
+                type: 'line',
+                data: {
+                    labels: ['1800', '1900', '1950', '2000', '2021'],
+                    datasets: [{
+                        label: 'Tuổi thọ trung bình toàn cầu (năm)',
+                        data: [29, 32, 46, 67, 71],
+                        backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                        borderColor: PALETTE.red,
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: commonChartOptions
+            });
+
+            var ctxInequality = document.getElementById('inequalityChart').getContext('2d');
+            new Chart(ctxInequality, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        wrapLabel('Truy cập Internet (Thành thị vs Nông thôn)', 20),
+                        wrapLabel('Tài sản số (Top 10% vs 90% còn lại)', 20),
+                        wrapLabel('Đầu tư vào AI (Các nước phát triển vs Đang phát triển)', 20)
+                    ],
+                    datasets: [{
+                        label: 'Mức độ chênh lệch',
+                        data: [60, 85, 95],
+                        backgroundColor: [
+                            PALETTE.yellow,
+                            PALETTE.blue,
+                            PALETTE.red
+                        ],
+                        borderColor: [
+                            '#FFFFFF'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: { ...commonChartOptions, indexAxis: 'y' }
+            });
+        };
+    </script>
+</body>
+</html>
